@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "7fd9d7e6-bc7f-4658-8460-d04598609042",
+		"name": "Payment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19740074"
+	},
+	"item": [
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Payments",
+					"item": [
+						{
+							"name": "Process Payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 208.3,\n    \"customerID\": 1,\n    \"merchantID\": 1,\n    \"paymentPlatformID\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{domain}}:{{port}}/v1/transactions/payments",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{domain}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"v1",
+										"transactions",
+										"payments"
+									]
+								},
+								"description": "Create a new diagnostics."
+							},
+							"response": [
+								{
+									"name": "Process Payment",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\": 208.3,\n    \"customerID\": 1,\n    \"merchantID\": 1,\n    \"paymentPlatformID\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{domain}}:{{port}}/v1/transactions/payments",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{domain}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"v1",
+												"transactions",
+												"payments"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 23 Feb 2024 22:59:48 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "194"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ID\": 7,\n    \"PaymentPlatformTransactionID\": \"3548896690053153\",\n    \"Amount\": 208.3,\n    \"customerID\": 1,\n    \"merchantID\": 1,\n    \"paymentPlatformID\": 1,\n    \"Type\": \"payment\",\n    \"Status\": \"successfull\",\n    \"PaymentPlatformResponse\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Retrieve Payment Detail",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 204.3,\n    \"customerID\": 1,\n    \"merchantID\": 1,\n    \"paymentPlatformID\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{domain}}:{{port}}/v1/transactions/payments/5",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{domain}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"v1",
+										"transactions",
+										"payments",
+										"5"
+									]
+								},
+								"description": "Create a new diagnostics."
+							},
+							"response": [
+								{
+									"name": "Retrieve Payment Detail",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\": 204.3,\n    \"customerID\": 1,\n    \"merchantID\": 1,\n    \"paymentPlatformID\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{domain}}:{{port}}/v1/transactions/payments/5",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{domain}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"v1",
+												"transactions",
+												"payments",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 23 Feb 2024 22:59:24 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "194"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ID\": 5,\n    \"PaymentPlatformTransactionID\": \"3588711378581040\",\n    \"Amount\": 208.3,\n    \"customerID\": 1,\n    \"merchantID\": 1,\n    \"paymentPlatformID\": 1,\n    \"Type\": \"payment\",\n    \"Status\": \"successfull\",\n    \"PaymentPlatformResponse\": \"\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Refunds",
+					"item": [
+						{
+							"name": "Refund a Transaction",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"platformTransactionID\": \"4539682062454701\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{domain}}:{{port}}/v1/transactions/refunds",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{domain}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"v1",
+										"transactions",
+										"refunds"
+									]
+								},
+								"description": "Create a new diagnostics."
+							},
+							"response": [
+								{
+									"name": "Refund a Transaction",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"platformTransactionID\": \"3588711378581040\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{domain}}:{{port}}/v1/transactions/refunds",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{domain}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"v1",
+												"transactions",
+												"refunds"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 23 Feb 2024 23:05:04 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "193"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"ID\": 5,\n    \"PaymentPlatformTransactionID\": \"3588711378581040\",\n    \"Amount\": 208.3,\n    \"customerID\": 1,\n    \"merchantID\": 1,\n    \"paymentPlatformID\": 1,\n    \"Type\": \"refund\",\n    \"Status\": \"successfull\",\n    \"PaymentPlatformResponse\": \"\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{domain}}:{{port}}/health/",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{domain}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"health",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/health/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"health",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 29 Nov 2023 23:51:13 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "7"
+						}
+					],
+					"cookie": [],
+					"body": "Healthy"
+				}
+			]
+		}
+	]
+}

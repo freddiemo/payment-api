@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  paymentsdb:
+    image: postgres:latest
+    container_name: paymentsdb
+    hostname: paymentsdb
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 5433:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - payments
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+  payments-api:
+    depends_on:
+      paymentsdb:
+        condition: service_healthy
+    build:
+      context: .
+    container_name: payments-api
+    hostname: payments-server
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - .:/app
+    networks:
+      - payments
+    deploy:
+      restart_policy:
+        condition: on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:${APP_PORT}/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+
+volumes:
+  pg_data:
+
+networks:
+  payments:
+    driver: bridge
